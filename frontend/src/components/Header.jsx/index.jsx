@@ -1,11 +1,11 @@
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import CommonButton from "../Common/CommonButton";
-import { UserContext } from "../../context/userContext";
 
 const Header = () => {
-	const { user } = useContext(UserContext);
-	console.log("herder ", user);
+	const user = localStorage.getItem("user");
+
+	console.log("user from   headrer ", user);
 	return (
 		<nav className="navbar bg-secondary navbar-dark p-4">
 			<div className="container">
