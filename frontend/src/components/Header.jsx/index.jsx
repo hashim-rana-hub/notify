@@ -5,6 +5,7 @@ import { UserContext } from "../../context/userContext";
 
 const Header = () => {
 	const { user } = useContext(UserContext);
+	console.log("herder ", user);
 	return (
 		<nav className="navbar bg-secondary navbar-dark p-4">
 			<div className="container">

@@ -140,10 +140,9 @@ form {
 .cardHeader h3 {
 	max-width: 70%;
 }
-.cardHeader > a {
+.cardHeader > .flexCenter icon {
 	width: 20%;
 	height: 30px;
-	background-color: #b33bff;
 	border-radius: 6px;
 	font-size: 12px;
 	text-decoration: none;

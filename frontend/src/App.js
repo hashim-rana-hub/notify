@@ -8,6 +8,7 @@ import SignIn from "./components/Signin/index.jsx";
 import Home from "./components/Home/index.jsx";
 import { createContext, useState } from "react";
 import { UserContext } from "./context/userContext.js";
+import EditNote from "./components/EditNote/index.jsx";
 
 function App() {
 	const [user, setUser] = useState();
@@ -21,6 +22,7 @@ function App() {
 					<Route path="/" element={<SignIn />} />
 					{/* <Route path="/forgot-password" element={<ForgotPassword />} /> */}
 					<Route path="/home" element={<Home />} />
+					<Route path="/edit/:id" element={<EditNote />} />
 					{/* 
         <Route path="/notes" element={<PrivateRoute />}>
           <Route path="/notes" element={<NotesScreen />} />

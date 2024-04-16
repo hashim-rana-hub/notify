@@ -58,3 +58,13 @@ export const deleteNoteCall = (noteId) => {
 			throw error;
 		});
 };
+export const updateNoteCall = (noteId, payload) => {
+	return axios
+		.put(`${API_URL}/note/${noteId}`, payload, {
+			withCredentials: true,
+		})
+		.then((res) => res?.data)
+		.catch((error) => {
+			throw error;
+		});
+};

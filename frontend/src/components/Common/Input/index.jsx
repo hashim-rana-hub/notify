@@ -8,6 +8,7 @@ const Input = ({
 	handleChange,
 	name,
 	error,
+	isDisabled = false,
 }) => {
 	return (
 		<>
@@ -19,6 +20,7 @@ const Input = ({
 					type={type}
 					name={name}
 					onChange={handleChange}
+					disabled={isDisabled}
 				/>
 			</div>
 			{error && <p>{error}</p>}
