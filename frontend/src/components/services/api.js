@@ -37,9 +37,9 @@ export const createNoteCall = (payload) => {
 		});
 };
 
-export const getAllNotesCall = () => {
+export const getAllNotesCall = (searchedNote = "", page = 1) => {
 	return axios
-		.get(`${API_URL}/note`, {
+		.get(`${API_URL}/note?keyword=${searchedNote}&page=${page}`, {
 			withCredentials: true,
 		})
 		.then((res) => res?.data)

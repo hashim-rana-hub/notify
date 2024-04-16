@@ -4,18 +4,21 @@ import AddNote from "../AddNote";
 import { useEffect } from "react";
 import { getAllNotesCall } from "../services/api";
 import NotesCard from "../NotesCard.jsx";
+import { useDebounce } from "../hooks/useDebounce.js";
 
 const Home = () => {
 	const [addNote, setAddNote] = useState(false);
 	const [notesList, setNotesList] = useState(null);
 	const [deleteNote, setDeleteNote] = useState(false);
 	const [emptyError, setEmptyError] = useState(false);
+	const [searchedNote, setSearchedNote] = useState("");
 
 	const loggedInUser = localStorage.getItem("user");
+	const debouncedSearch = useDebounce(searchedNote, 500);
 
 	const getAllNotes = async () => {
 		try {
-			const notes = await getAllNotesCall();
+			const notes = await getAllNotesCall(searchedNote);
 			setNotesList(notes);
 			setEmptyError("");
 		} catch (error) {
@@ -28,13 +31,17 @@ const Home = () => {
 		if (loggedInUser && notesList?.notes?.length == 0) setAddNote(true);
 
 		getAllNotes();
-	}, [addNote, deleteNote]);
+	}, [addNote, deleteNote, debouncedSearch]);
 
 	return (
 		<div>
 			<div className="addNoteWrapper">
 				<CommonButton text="Add Note" onClick={() => setAddNote(true)} />
-				<input placeholder="search notes here ..." />
+				<input
+					placeholder="search notes here ..."
+					value={searchedNote}
+					onChange={(e) => setSearchedNote(e.target.value)}
+				/>
 			</div>
 			{emptyError ? (
 				<h1 className="emptyList">
