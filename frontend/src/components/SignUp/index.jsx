@@ -22,7 +22,6 @@ const SignUp = () => {
 			console.log("error from signup ", error?.message);
 		}
 	};
-	console.log("hello ", user);
 	const formik = useFormik({
 		initialValues: {
 			email: "",

@@ -13,14 +13,14 @@ const SignIn = () => {
 	const navigate = useNavigate();
 	const [userData, setUserData] = useState({});
 	const { user, setUser } = useContext(UserContext);
-	console.log("value ", user, setUser);
 
 	const handleSignIn = async (values) => {
 		try {
-			setUserData(values);
-			const { user } = await getUserLoginCall(userData);
-			setUser(user);
+			// setUserData(values);
+			const { user } = await getUserLoginCall(values);
+			localStorage.setItem("user", JSON.stringify(user));
 			toast.success("Welcome to notify");
+			setUser(user);
 		} catch (error) {
 			toast.error(error.message);
 			throw error;
@@ -38,7 +38,6 @@ const SignIn = () => {
 	const token = sessionStorage.getItem("token");
 
 	useEffect(() => {
-		console.log("token ------ ", token);
 		if (!!token) navigate("/home");
 	}, [token]);
 

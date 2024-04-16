@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import CommonButton from "../Common/CommonButton";
+import { UserContext } from "../../context/userContext";
 
-const Header = ({ user }) => {
+const Header = () => {
+	const { user } = useContext(UserContext);
 	return (
 		<nav className="navbar bg-secondary navbar-dark p-4">
 			<div className="container">
